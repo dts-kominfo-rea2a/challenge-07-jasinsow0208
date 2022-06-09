@@ -26,9 +26,9 @@ const promiseOutput = async (param1) => {
     }
 
     if (param1 == "marah") {
-      return jmlMarah.toString();
+      return jmlMarah;
     } else {
-      return jmlTidakMarah.toString();
+      return jmlTidakMarah;
     }
   } catch (err) {
     console.log(err);
