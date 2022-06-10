@@ -3,33 +3,18 @@ const { promiseTheaterIXX, promiseTheaterVGC } = require("./external.js");
 // TODO: Buat fungsi promiseOutput sesuai ketentuan readme
 const promiseOutput = async (param1) => {
   try {
-    let data1 = await promiseTheaterIXX();
-    let data2 = await promiseTheaterVGC();
+    const data1 = await promiseTheaterIXX();
+    const data2 = await promiseTheaterVGC();
 
-    let jmlTidakMarah = 0;
-    let jmlMarah = 0;
+    const jml =
+      data1.filter((segment) => {
+        return segment.hasil == param1;
+      }).length +
+      data2.filter((segment) => {
+        return segment.hasil == param1;
+      }).length;
 
-    for (let i = 0; i < data1.length; i++) {
-      if (data1[i].hasil == "marah") {
-        jmlMarah += 1;
-      } else {
-        jmlTidakMarah += 1;
-      }
-    }
-
-    for (let i = 0; i < data2.length; i++) {
-      if (data2[i].hasil == "marah") {
-        jmlMarah += 1;
-      } else {
-        jmlTidakMarah += 1;
-      }
-    }
-
-    if (param1 == "marah") {
-      return jmlMarah;
-    } else {
-      return jmlTidakMarah;
-    }
+    return jml;
   } catch (err) {
     console.log(err);
   }
